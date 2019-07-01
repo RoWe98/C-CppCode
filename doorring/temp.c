@@ -1,4 +1,5 @@
 #include"temp.h"
+#include "LCD.h"
 /*******************************************************************************
 * 函数名         : Delay1ms
 * 函数功能		   : 延时函数
@@ -111,6 +112,8 @@ void  Ds18b20ReadTempCom()
 {	
 
 	Ds18b20Init();
+	//LcdWriteCom(0x80);
+	LcdWriteCom(0xC0);   
 	Delay1ms(1);
 	Ds18b20WriteByte(0xcc);	 //跳过ROM操作命令
 	Ds18b20WriteByte(0xbe);	 //发送读取温度命令

@@ -1,7 +1,7 @@
 #ifndef __TEMP_H_
 #define __TEMP_H_
 
-#include<reg51.h>
+#include "reg52.h"
 
 sbit DSPORT=P3^7;
 

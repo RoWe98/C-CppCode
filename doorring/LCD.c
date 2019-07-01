@@ -1,14 +1,14 @@
 #include "LCD.h"
 
 /*******************************************************************************
-* º¯ Êý Ãû         : Lcd1602_Delay1ms
-* º¯Êý¹¦ÄÜ		   : ÑÓÊ±º¯Êý£¬ÑÓÊ±1ms
-* Êä    Èë         : c
-* Êä    ³ö         : ÎÞ
-* Ëµ    Ãû         : ¸Ãº¯ÊýÊÇÔÚ12MHZ¾§ÕñÏÂ£¬12·ÖÆµµ¥Æ¬»úµÄÑÓÊ±¡£
+* å‡½ æ•° å         : Lcd1602_Delay1ms
+* å‡½æ•°åŠŸèƒ½		   : å»¶æ—¶å‡½æ•°ï¼Œå»¶æ—¶1ms
+* è¾“    å…¥         : c
+* è¾“    å‡º         : æ— 
+* è¯´    å         : è¯¥å‡½æ•°æ˜¯åœ¨12MHZæ™¶æŒ¯ä¸‹ï¼Œ12åˆ†é¢‘å•ç‰‡æœºçš„å»¶æ—¶ã€‚
 *******************************************************************************/
 
-void Lcd1602_Delay1ms(uint c)   //Îó²î 0us
+void Lcd1602_Delay1ms(uint c)   //è¯¯å·® 0us
 {
     uchar a,b;
 	for (; c>0; c--)
@@ -22,112 +22,112 @@ void Lcd1602_Delay1ms(uint c)   //Îó²î 0us
 }
 
 /*******************************************************************************
-* º¯ Êý Ãû         : LcdWriteCom
-* º¯Êý¹¦ÄÜ		   : ÏòLCDÐ´ÈëÒ»¸ö×Ö½ÚµÄÃüÁî
-* Êä    Èë         : com
-* Êä    ³ö         : ÎÞ
+* å‡½ æ•° å         : LcdWriteCom
+* å‡½æ•°åŠŸèƒ½		   : å‘LCDå†™å…¥ä¸€ä¸ªå­—èŠ‚çš„å‘½ä»¤
+* è¾“    å…¥         : com
+* è¾“    å‡º         : æ— 
 *******************************************************************************/
-#ifndef 	LCD1602_4PINS	 //µ±Ã»ÓÐ¶¨ÒåÕâ¸öLCD1602_4PINSÊ±
-void LcdWriteCom(uchar com)	  //Ð´ÈëÃüÁî
+#ifndef 	LCD1602_4PINS	 //å½“æ²¡æœ‰å®šä¹‰è¿™ä¸ªLCD1602_4PINSæ—¶
+void LcdWriteCom(uchar com)	  //å†™å…¥å‘½ä»¤
 {
-	LCD1602_E = 0;     //Ê¹ÄÜ
-	LCD1602_RS = 0;	   //Ñ¡Ôñ·¢ËÍÃüÁî
-	LCD1602_RW = 0;	   //Ñ¡ÔñÐ´Èë
+	LCD1602_E = 0;     //ä½¿èƒ½
+	LCD1602_RS = 0;	   //é€‰æ‹©å‘é€å‘½ä»¤
+	LCD1602_RW = 0;	   //é€‰æ‹©å†™å…¥
 	
-	LCD1602_DATAPINS = com;     //·ÅÈëÃüÁî
-	Lcd1602_Delay1ms(1);		//µÈ´ýÊý¾ÝÎÈ¶¨
+	LCD1602_DATAPINS = com;     //æ”¾å…¥å‘½ä»¤
+	Lcd1602_Delay1ms(1);		//ç­‰å¾…æ•°æ®ç¨³å®š
 
-	LCD1602_E = 1;	          //Ð´ÈëÊ±Ðò
-	Lcd1602_Delay1ms(5);	  //±£³ÖÊ±¼ä
+	LCD1602_E = 1;	          //å†™å…¥æ—¶åº
+	Lcd1602_Delay1ms(5);	  //ä¿æŒæ—¶é—´
 	LCD1602_E = 0;
 }
 #else 
-void LcdWriteCom(uchar com)	  //Ð´ÈëÃüÁî
+void LcdWriteCom(uchar com)	  //å†™å…¥å‘½ä»¤
 {
-	LCD1602_E = 0;	 //Ê¹ÄÜÇåÁã
-	LCD1602_RS = 0;	 //Ñ¡ÔñÐ´ÈëÃüÁî
-	LCD1602_RW = 0;	 //Ñ¡ÔñÐ´Èë
+	LCD1602_E = 0;	 //ä½¿èƒ½æ¸…é›¶
+	LCD1602_RS = 0;	 //é€‰æ‹©å†™å…¥å‘½ä»¤
+	LCD1602_RW = 0;	 //é€‰æ‹©å†™å…¥
 
-	LCD1602_DATAPINS = com;	//ÓÉÓÚ4Î»µÄ½ÓÏßÊÇ½Óµ½P0¿ÚµÄ¸ßËÄÎ»£¬ËùÒÔ´«ËÍ¸ßËÄÎ»²»ÓÃ¸Ä
+	LCD1602_DATAPINS = com;	//ç”±äºŽ4ä½çš„æŽ¥çº¿æ˜¯æŽ¥åˆ°P0å£çš„é«˜å››ä½ï¼Œæ‰€ä»¥ä¼ é€é«˜å››ä½ä¸ç”¨æ”¹
 	Lcd1602_Delay1ms(1);
 
-	LCD1602_E = 1;	 //Ð´ÈëÊ±Ðò
+	LCD1602_E = 1;	 //å†™å…¥æ—¶åº
 	Lcd1602_Delay1ms(5);
 	LCD1602_E = 0;
 
-	LCD1602_DATAPINS = com << 4; //·¢ËÍµÍËÄÎ»
+	LCD1602_DATAPINS = com << 4; //å‘é€ä½Žå››ä½
 	Lcd1602_Delay1ms(1);
 
-	LCD1602_E = 1;	 //Ð´ÈëÊ±Ðò
+	LCD1602_E = 1;	 //å†™å…¥æ—¶åº
 	Lcd1602_Delay1ms(5);
 	LCD1602_E = 0;
 }
 #endif
 /*******************************************************************************
-* º¯ Êý Ãû         : LcdWriteData
-* º¯Êý¹¦ÄÜ		   : ÏòLCDÐ´ÈëÒ»¸ö×Ö½ÚµÄÊý¾Ý
-* Êä    Èë         : dat
-* Êä    ³ö         : ÎÞ
+* å‡½ æ•° å         : LcdWriteData
+* å‡½æ•°åŠŸèƒ½		   : å‘LCDå†™å…¥ä¸€ä¸ªå­—èŠ‚çš„æ•°æ®
+* è¾“    å…¥         : dat
+* è¾“    å‡º         : æ— 
 *******************************************************************************/		   
 #ifndef 	LCD1602_4PINS		   
-void LcdWriteData(uchar dat)			//Ð´ÈëÊý¾Ý
+void LcdWriteData(uchar dat)			//å†™å…¥æ•°æ®
 {
-	LCD1602_E = 0;	//Ê¹ÄÜÇåÁã
-	LCD1602_RS = 1;	//Ñ¡ÔñÊäÈëÊý¾Ý
-	LCD1602_RW = 0;	//Ñ¡ÔñÐ´Èë
+	LCD1602_E = 0;	//ä½¿èƒ½æ¸…é›¶
+	LCD1602_RS = 1;	//é€‰æ‹©è¾“å…¥æ•°æ®
+	LCD1602_RW = 0;	//é€‰æ‹©å†™å…¥
 
-	LCD1602_DATAPINS = dat; //Ð´ÈëÊý¾Ý
+	LCD1602_DATAPINS = dat; //å†™å…¥æ•°æ®
 	Lcd1602_Delay1ms(1);
 
-	LCD1602_E = 1;   //Ð´ÈëÊ±Ðò
-	Lcd1602_Delay1ms(5);   //±£³ÖÊ±¼ä
+	LCD1602_E = 1;   //å†™å…¥æ—¶åº
+	Lcd1602_Delay1ms(5);   //ä¿æŒæ—¶é—´
 	LCD1602_E = 0;
 }
 #else
-void LcdWriteData(uchar dat)			//Ð´ÈëÊý¾Ý
+void LcdWriteData(uchar dat)			//å†™å…¥æ•°æ®
 {
-	LCD1602_E = 0;	  //Ê¹ÄÜÇåÁã
-	LCD1602_RS = 1;	  //Ñ¡ÔñÐ´ÈëÊý¾Ý
-	LCD1602_RW = 0;	  //Ñ¡ÔñÐ´Èë
+	LCD1602_E = 0;	  //ä½¿èƒ½æ¸…é›¶
+	LCD1602_RS = 1;	  //é€‰æ‹©å†™å…¥æ•°æ®
+	LCD1602_RW = 0;	  //é€‰æ‹©å†™å…¥
 
-	LCD1602_DATAPINS = dat;	//ÓÉÓÚ4Î»µÄ½ÓÏßÊÇ½Óµ½P0¿ÚµÄ¸ßËÄÎ»£¬ËùÒÔ´«ËÍ¸ßËÄÎ»²»ÓÃ¸Ä
+	LCD1602_DATAPINS = dat;	//ç”±äºŽ4ä½çš„æŽ¥çº¿æ˜¯æŽ¥åˆ°P0å£çš„é«˜å››ä½ï¼Œæ‰€ä»¥ä¼ é€é«˜å››ä½ä¸ç”¨æ”¹
 	Lcd1602_Delay1ms(1);
 
-	LCD1602_E = 1;	  //Ð´ÈëÊ±Ðò
+	LCD1602_E = 1;	  //å†™å…¥æ—¶åº
 	Lcd1602_Delay1ms(5);
 	LCD1602_E = 0;
 
-	LCD1602_DATAPINS = dat << 4; //Ð´ÈëµÍËÄÎ»
+	LCD1602_DATAPINS = dat << 4; //å†™å…¥ä½Žå››ä½
 	Lcd1602_Delay1ms(1);
 
-	LCD1602_E = 1;	  //Ð´ÈëÊ±Ðò
+	LCD1602_E = 1;	  //å†™å…¥æ—¶åº
 	Lcd1602_Delay1ms(5);
 	LCD1602_E = 0;
 }
 #endif
 /*******************************************************************************
-* º¯ Êý Ãû       : LcdInit()
-* º¯Êý¹¦ÄÜ		 : ³õÊ¼»¯LCDÆÁ
-* Êä    Èë       : ÎÞ
-* Êä    ³ö       : ÎÞ
+* å‡½ æ•° å       : LcdInit()
+* å‡½æ•°åŠŸèƒ½		 : åˆå§‹åŒ–LCDå±
+* è¾“    å…¥       : æ— 
+* è¾“    å‡º       : æ— 
 *******************************************************************************/		   
 #ifndef		LCD1602_4PINS
-void LcdInit()						  //LCD³õÊ¼»¯×Ó³ÌÐò
+void LcdInit()						  //LCDåˆå§‹åŒ–å­ç¨‹åº
 {
- 	LcdWriteCom(0x38);  //¿ªÏÔÊ¾
-	LcdWriteCom(0x0c);  //¿ªÏÔÊ¾²»ÏÔÊ¾¹â±ê
-	LcdWriteCom(0x06);  //Ð´Ò»¸öÖ¸Õë¼Ó1
-	LcdWriteCom(0x01);  //ÇåÆÁ
-	LcdWriteCom(0x80);  //ÉèÖÃÊý¾ÝÖ¸ÕëÆðµã
+ 	LcdWriteCom(0x38);  //å¼€æ˜¾ç¤º
+	LcdWriteCom(0x0c);  //å¼€æ˜¾ç¤ºä¸æ˜¾ç¤ºå…‰æ ‡
+	LcdWriteCom(0x06);  //å†™ä¸€ä¸ªæŒ‡é’ˆåŠ 1
+	LcdWriteCom(0x01);  //æ¸…å±
+	LcdWriteCom(0x80);  //è®¾ç½®æ•°æ®æŒ‡é’ˆèµ·ç‚¹
 }
 #else
-void LcdInit()						  //LCD³õÊ¼»¯×Ó³ÌÐò
+void LcdInit()						  //LCDåˆå§‹åŒ–å­ç¨‹åº
 {
-	LcdWriteCom(0x32);	 //½«8Î»×ÜÏß×ªÎª4Î»×ÜÏß
-	LcdWriteCom(0x28);	 //ÔÚËÄÎ»ÏßÏÂµÄ³õÊ¼»¯
-	LcdWriteCom(0x0c);  //¿ªÏÔÊ¾²»ÏÔÊ¾¹â±ê
-	LcdWriteCom(0x06);  //Ð´Ò»¸öÖ¸Õë¼Ó1
-	LcdWriteCom(0x01);  //ÇåÆÁ
-	LcdWriteCom(0x80);  //ÉèÖÃÊý¾ÝÖ¸ÕëÆðµã
+	LcdWriteCom(0x32);	 //å°†8ä½æ€»çº¿è½¬ä¸º4ä½æ€»çº¿
+	LcdWriteCom(0x28);	 //åœ¨å››ä½çº¿ä¸‹çš„åˆå§‹åŒ–
+	LcdWriteCom(0x0c);  //å¼€æ˜¾ç¤ºä¸æ˜¾ç¤ºå…‰æ ‡
+	LcdWriteCom(0x06);  //å†™ä¸€ä¸ªæŒ‡é’ˆåŠ 1
+	LcdWriteCom(0x01);  //æ¸…å±
+	LcdWriteCom(0x80);  //è®¾ç½®æ•°æ®æŒ‡é’ˆèµ·ç‚¹
 }
 #endif
